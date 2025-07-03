@@ -6,7 +6,7 @@ const authRoutes = require('./routes/auth');
 
 dotenv.config();
 
-const app = express(); // ✅ Move this up
+const app = express();
 
 // Middleware
 app.use(express.json());
@@ -23,11 +23,12 @@ mongoose.connect(process.env.MONGO_URI, {
 .then(() => console.log('✅ MongoDB connected'))
 .catch((err) => console.error('❌ MongoDB connection error:', err));
 
-// Test route
+// Test Route
 app.get('/', (req, res) => {
   res.send('API is running...');
 });
 
+// ✅ Dynamic port for Render
 const PORT = process.env.PORT || 3030;
 app.listen(PORT, () => {
   console.log(`🚀 Server is running on port ${PORT}`);
